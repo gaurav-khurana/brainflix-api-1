@@ -15,6 +15,9 @@ app.use(cors());
 // middleware for JSON formatnp
 app.use(express.json());
 
+// serve static-files
+app.use("/static-files", express.static("public"));
+
 // import videos-routes here
 app.use("/videos", videosroutes);
 

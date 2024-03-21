@@ -35,9 +35,32 @@ router.post("/", (req, res) => {
   const newVideo = {
     id: uniqid(),
     title: req.body.title,
-    channel: req.body.channel,
+    channel: "Console Blog .js",
+    image: "http://localhost:8080/static-files/images/followHeart.png",
     description: req.body.description,
+    views: "11,762",
+    likes: "75,232",
+    duration: "26:52",
+    video: "https://unit-3-project-api-0a5620414506.herokuapp.com/stream",
     timestamp: new Date().getTime(),
+    comments: [
+      {
+        id: "6ff4314c-acde-4c91-a753-95cb7a366ee9",
+        name: "Captain Hook",
+        comment:
+          "Your video is a visual feast! I feel I should not have wasted my time seeing videos on online platform and should be reading or playing some sport. Thanks for destroying my brain cells",
+        likes: 12,
+        timestamp: 1698383862000,
+      },
+      {
+        id: "894b2ef9-640e-4d55-95ac-c65cfc39d693",
+        name: "Daffy Duck",
+        comment:
+          "Quack Quack. While the cinematography is stunning, I'd appreciate which is actually relevant. The content was really nice, made me kinda fuzzy. The promotional adverts in your video were really fun",
+        likes: 3,
+        timestamp: 1698297462000,
+      },
+    ],
   };
 
   // push into general videos file

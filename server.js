@@ -15,6 +15,18 @@ app.use(cors());
 // middleware for JSON formatnp
 app.use(express.json());
 
+// middleware to check if received is JSON or not
+app.use((req, res, next) => {
+  if (
+    req.method == "Post" &&
+    req.headers["content-type"] !== "application/json"
+  ) {
+    return res.status(400).send("JSON format needed to post comments");
+  }
+  console.log("JSON received");
+  next();
+});
+
 // serve static-files
 app.use("/static-files", express.static("public"));
 

@@ -80,24 +80,40 @@ router.post("/", (req, res) => {
 });
 
 // route to post comments to individual video
-router.post("/videos/:videoId/comments", (req, res) => {
+router.post("/:videoId/comments", (req, res) => {
   // get video from all videos
+  console.log("i reached here");
   const videoId = req.params.videoId;
   const allVideosDetails = readAllVideoDetails();
   const selectedVideo = allVideosDetails.find((video) => video.id === videoId);
+  const indexSelectedVideo = allVideosDetails.findIndex(
+    (video) => video === selectedVideo
+  );
+  console.log(indexSelectedVideo);
 
   const newComment = {
+    id: uniqid(),
     name: "Bugs Bunny",
     comment: req.body.comment,
-    id: uniqid(),
+    likes: 0,
     timestamp: new Date().getTime(),
   };
 
-  // const allComments = readAllVideoDetails();
-  console.log("i reached here");
+  console.log("new comment created on server");
   console.log(selectedVideo.comments);
-  selectedVideo.comments.push(newComment);
-  fs.writeFileSync("./data/video-details.json", selectedVideo.comments);
+  selectedVideo.comments.unshift(newComment);
+
+  console.log(selectedVideo.comments);
+  console.log("selectedVideo.comments List");
+
+  allVideosDetails.splice(indexSelectedVideo, 1, selectedVideo);
+  console.log(allVideosDetails);
+
+  fs.writeFileSync(
+    "./data/video-details.json",
+    JSON.stringify(allVideosDetails)
+  );
+  fs.writeFileSync("./data/videos.json", JSON.stringify(allVideosDetails));
 
   res.status(201).json(newComment);
 });

@@ -82,14 +82,9 @@ router.post("/", (req, res) => {
 // route to post comments to individual video
 router.post("/:videoId/comments", (req, res) => {
   // get video from all videos
-  console.log("i reached here");
   const videoId = req.params.videoId;
   const allVideosDetails = readAllVideoDetails();
   const selectedVideo = allVideosDetails.find((video) => video.id === videoId);
-  const indexSelectedVideo = allVideosDetails.findIndex(
-    (video) => video === selectedVideo
-  );
-  console.log(indexSelectedVideo);
 
   const newComment = {
     id: uniqid(),
@@ -99,21 +94,27 @@ router.post("/:videoId/comments", (req, res) => {
     timestamp: new Date().getTime(),
   };
 
-  console.log("new comment created on server");
-  console.log(selectedVideo.comments);
   selectedVideo.comments.unshift(newComment);
 
-  console.log(selectedVideo.comments);
-  console.log("selectedVideo.comments List");
-
+  const indexSelectedVideo = allVideosDetails.findIndex(
+    (video) => video === selectedVideo
+  );
   allVideosDetails.splice(indexSelectedVideo, 1, selectedVideo);
-  console.log(allVideosDetails);
+
+  const trimmedVideoDetails = allVideosDetails.map((video) => {
+    return {
+      id: video.id,
+      title: video.title,
+      channel: video.channel,
+      image: video.image,
+    };
+  });
 
   fs.writeFileSync(
     "./data/video-details.json",
     JSON.stringify(allVideosDetails)
   );
-  fs.writeFileSync("./data/videos.json", JSON.stringify(allVideosDetails));
+  fs.writeFileSync("./data/videos.json", JSON.stringify(trimmedVideoDetails));
 
   res.status(201).json(newComment);
 });

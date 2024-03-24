@@ -12,6 +12,13 @@
     "timestamp": 1711237337281,
     "comments": [
       {
+        "id": "3xtqu7nclu4r36rt",
+        "name": "Bugs Bunny",
+        "comment": "I think everything works",
+        "likes": 0,
+        "timestamp": 1711238279176
+      },
+      {
         "id": "3xtqu6ywlu4qm4ly",
         "name": "Bugs Bunny",
         "comment": "Thank you your tutorial was very helpful",
@@ -47,6 +54,20 @@
     "timestamp": 1691471862000,
     "comments": [
       {
+        "id": "3xtqu8ghlu4rm11i",
+        "name": "Bugs Bunny",
+        "comment": "Server check",
+        "likes": 0,
+        "timestamp": 1711239158213
+      },
+      {
+        "id": "3xtqu7k9lu4r0mco",
+        "name": "Bugs Bunny",
+        "comment": "I think everything works",
+        "likes": 0,
+        "timestamp": 1711238159399
+      },
+      {
         "id": "35bba08b-1b51-4153-ba7e-6da76b5ec1b9",
         "name": "Noah Duncan",
         "comment": "Your insights into the future of AI are enlightening! The intersection of technology and ethics is particularly thought-provoking. Keep us updated on the tech front!",
@@ -81,6 +102,13 @@
     "video": "https://unit-3-project-api-0a5620414506.herokuapp.com/stream",
     "timestamp": 1690089462000,
     "comments": [
+      {
+        "id": "3xtqu82glu4re15r",
+        "name": "Bugs Bunny",
+        "comment": "Server check 1,2,3",
+        "likes": 0,
+        "timestamp": 1711238785118
+      },
       {
         "id": "ade82e25-6c87-4403-ba35-47bdff93a51c",
         "name": "Maria Aziz",

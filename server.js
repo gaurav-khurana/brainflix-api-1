@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   ) {
     return res.status(400).send("JSON format needed to post comments");
   }
-  console.log("JSON received");
+
   next();
 });
 
